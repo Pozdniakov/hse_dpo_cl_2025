@@ -1,0 +1,70 @@
+---
+title: "Beautiful spring 2025"
+author: "Pozdniakov"
+format: html
+editor: visual
+bibliography: references.bib
+---
+
+## Quarto
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+heroes <- read_csv("https://raw.githubusercontent.com/Pozdniakov/tidy_stats/master/data/heroes_information.csv",
+                   na = c("-", "-99", "NA", " "))
+heroes
+```
+
+Quarto **enables** you to *weave* together *content* and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+Код прямо в тексте: `mean(1:10)`
+
+```         
+mean(1:10)
+```
+
+```{r}
+mean(1:10)
+```
+
+## Running Code
+
+When you click the **Render**[@wickham2019welcome] button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: callout-note
+## Смотрите это callout
+
+You can add options to executable code like this
+:::
+
+![](https://quarto.org/quarto.png){fig-align="center"}
+
+<h2>HTML-заголовок второго уровня</h2>
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed). `r 2 + 2`
+
+## Статистика
+
+```{r}
+library(apa)
+```
+
+Т-тест проведенный на двух выборках из сттандартного нормального распределения не показал ничего удивительного `r t_apa(t.test(rnorm(30), rnorm(30), var.equal = TRUE), format = "text")`
+
+## Интерактивные таблицы
+
+```{r}
+library(DT)
+datatable(iris)
+```
